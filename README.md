@@ -1,5 +1,6 @@
 # 112-Term-Project-Stock-Scraper
 Project was done at the end of 15-112. 
+Video Demo is here: https://youtu.be/jNkt52epFTU
 
 The program is a simple Stock Analyzer: 
 Can do single stock analysis. It web scrapes for stock info and graphs it in a custom built tkinter graphing interface which can be commanded to use multivariate regression to build a linear, and a polynomial regression model (The models are based loosely on a time series analysis).  Additionally, it pulls from the web stock fundamentals (p/e ratio, volume, ROA etc.) so that they can be easily accessed. 
