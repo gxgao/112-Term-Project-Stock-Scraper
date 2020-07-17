@@ -1,0 +1,140 @@
+
+Project Proposal [15 pts]
+Write up a proposal file (in the file proposal.txt, or .docx, or .pdf) which should include the following components:
+
+Project Description [2.5 pts]: The name of the term project and a short description of what it will be.
+	MVP:
+	Stock Analyzer: 
+	Can do single stock analysis: graphs it in custom built tkinter graphing interface, shows linear, and possibly polynomial regression models
+	and points out major price spikes and correlated news 
+	After MVP and Additional:
+	Introduction of ML, and Industry Analysis to compare similar competing companies with multivariable analysis and ML.
+
+Competitive Analysis [2.5 pts]: A 1-2 paragraph analysis of similar projects you've seen online, and how your project will be similar or different to those.
+	https://biocrudetech.com/index.php?option=com_blankcomponent&view=default&Itemid=669 - > Does a return regression, similar but compares one stock 
+	movement to another. 
+	Mine does that with date instead
+	Most analysis are more complex focusing on Time Series Analysis, or SCP analysis linear is rarer due to unreliability 
+	A few small coding projects that involve the same linear regression analysis however they never use a custom grapher in their works. Mine does 
+	include a graph and is different as it's able to improve on being able to interact with the graph thereby giving more flexibility for the future. 
+	Excel is also able to achieve the same function of what I'm doing however it is less automated than my program.
+	Next, there are a few API's that look at stock news and sentimentality however, there aren't many programs out there that correlate spikes of prices
+	to news headlines. Most graphics are found to be hand built. My program would automate that process, however it would probably be less accurate.
+	BloomBerg Terminals are also built with much more information than my program but once again, their graphing interfact doesn't exactly point out
+	price spikes according to news headlines.  
+	There are some sentiment analysis apps that use NLTK but those are focused on trading rather than graphing. 
+
+
+Structural Plan [2.5 pts]: A structural plan for how the finalized project will be organized in different functions, files and/or objects.
+There will be three main files: 
+The main graphics one. This is where the program starts and runs from. It imports functions and variables from the other files
+The web scraping one - This is where the program scrapes the web for the appropriate information that the user inputs through the graphical interface
+The statistical one- this is where all the matrix algebra, statistical analysis, data parsing is done.  
+CSV files are downloaded from the web through the requests module and stored in my Term Project Folder
+JSON parsing is by storing all the neccessary information in a dictionary
+
+Objects:
+	
+	Graphs are Objects [every set of data points has their own graph associated with it, keeps all variables in a good place, has functions that can modify the graph]
+	
+	
+	
+	
+	After MVP : 
+Dictionaries are stored as a pickle file that contain all fundamentals of an industry analysis (mcap and industry) 
+Classes: Stock groups are stored in their own class. Allows for easy grouping of data
+	
+
+Algorithmic Plan [2.5 pts]: A detailed algorithmic plan for how you will approach the trickiest part of the project. 
+Be sure to clearly highlight which part(s) of your project are algorithmically most complex, and include details of the algorithm(s) 
+you are using in those cases.
+	
+	The first part of complexity involved familiarizing myself with selenium, web scraping, and a little bit of html. Most of the web scraping is done
+	in a structured way that involved loops, list comprehensions, and storing into pickle data sets. 
+		
+	2nd part of complexity were the statistical models that I had to build. I began by cleaning and parsing through excel data.
+	I then took a crash course on matrix algebra to get a general understanding of the processes (ex. least Squares fitting )then jumped 
+	into learning multivariable regression analysis. This part involves using Numpy to handle the linear algebra 
+	functions while I put together the inputs in a proper format that I could use to build predictions, and equations. Numpy specifically handled
+	inversing a matrix, transposing it, and multiplication. I focused on priming any dimensional lists into a format that could progress with the numpy
+	matrix algebra. This included making sure columns lined up, adding additional 1s to fit the multivariable equation, and building and dismantling 
+	matrices. The final product is incredibly flexible function as the multivariable function could produce an equation, and predicted points for 
+	any amount of variables including 1, which is used for the linear regression analysis. Additionally I will write my own transpose function for matrixes
+	and if I have time I can work on the linear algebra functions of inversing a matrix after MVP. 
+
+	Next part of the complexity was the one I had the most trouble with, and that is the pixel counting to graph things properly in a custom tkinter graph. 
+	Everything needed to be scaled properly and the graph's grid needed to always fit all points. Since all graphs are different and needed to be scaled properly,
+	 the grid would be dependent on the list of points given. I mostly worked with a lot of formulas that I derived myself in order to get the correct x and y 
+	canvas coordinates when given a data point. I used for and while loops to create lists that stored the x and y coordinates, as well as their values. 
+	This made it so that I was storing coordinates into 2-d lists of tuples, which is a bit like a 3-d list. Further functions were developed to cut out 
+	unused graphs, and this basically compared the highest coordinate of a y point created a new grid that had the same coordinates as before except 
+	it doesn’t include any grid coordinates above that point. Since the grid changed, another algorithm needed to be developed to recoordinate the 
+	graph by shifting everything upwards. This also made it so that every yPoint and their coordinate needed to be shifted as well. Further work is 
+	needed in debugging as well as properly displaying the tick steps on the graph. A Legend can also be added and a title as well. 
+	All of these coordinates will have their coordinates based on variables of the graph object. This makes it so that it can adjust to 
+	different types of input and still fit everything on the canvas page. 
+ 
+	The final part of complexity is determining spikes in a graph. I am planning to look at the derivative of the price of a stock as a function of time
+	and compare it to the prices, and derivatives before that in a certain time horizon to find the largest spikes. 
+	After that, the web is scrapped for the proper head line and matching sentimentality to the respective move in price and the point is added to the graph. The point can be interacted with in order for the 
+	user to stay updated on both the news and how the news has affected the price of the stock. 
+	
+	Once I reach MVP I can move towards using multivariable analysis and further string parsing in order to clean up industry analysis dictionary
+	and create a UI to display the analysis. The analysis will include 
+
+
+
+
+Timeline Plan [2.5 pts]: A timeline for when you intend to complete the major features of the project.
+	TP1 - > Graphing function done, skeleton of UI done, most display states shown, most statistical functions done 
+	4/20- > Web Scraping part finished (storing data for single and multi stock analysis and downloading excel and data files to specific folders, able
+		to access stock news, stock historical prices, and industry ratios )  
+		Integration of Web Scraping part with graph UI 
+	4/23- > MVP completed, bug fixing all of the above, UI polishing 
+	4/27- > SKLearn up and running ? If needed, further UI polishing, introduction of QUAND possibly 
+
+
+Version Control Plan [1.5 pts]: A short description and image demonstrating how you are using version control to back up your code. Notes:
+You must back up your code somehow!!!
+	I've backed up my files on Google Drive. Image in folder
+
+
+Module List [1 pts]: A list of all external modules/hardware/technologies you are planning to use in your project. Note that any such modules
+ must be approved by a tech demo. If you are not planning to use any additional modules, that's okay, just say so!
+	Tkinter
+	Numpy
+	Selenium
+	BS4
+	Pickle
+	Requests 
+
+Storyboard [10 pts]
+Generate a storyboard that demonstrates how a user would interact with your finished project. Your storyboard should have at least six panels, 
+and at least three of those should demonstrate features within the project. You may scan or take a picture of your storyboard and include it in 
+the directory as the file storyboard.png (other acceptable file types include .gif, .jpg, and .pdf).
+
+
+UPDATES: 
+Spike algorithm looks at market momentum and extends a search range based on market momentum. This allows us to find trends better by adding all news 
+in the extended date range. (default date range is only 3 days with a price change of 10%). Additionally, it always looks at min and max and finds news
+over that trend range (uses a similar algorithm as the market momentum one). 
+News algorithm also changed, added a string parsing segment that filters dates by spike indexes so we only call the api for those dates. This allows
+me to save api calls as well as see more news since before, news was capped to 50 per page. 
+Additionally, added a scrolling tickers bar that takes 500 of the most popular stock tickers, picks 20 and scrolls them across the screen for aethetic purposes
+for the algorithm, I used a 2d array of a list of coordinates that the redraw all draws from. 
+Also I added a image loader that preloads all required news images from online, puts it into a list and pulls it when the user clicks onto the news dot 
+that they want to examine. 
+Added string parsing for equations and evaluating a predicted price based on a user input. This was mostly string parsing and string formating to make
+sure eval() evaluated correctly. 
+
+Bug fixing graphing function since very small price changes will not graph correctly. 
+Bug fixed news coordinates, bug fixed xLabels to appear with years now, bug fixed 
+
+Design Changes: 
+Added a lot of UI changes to make everything look nicer. 
+datetime module was added for better Aesthetics
+As mentioned above, scorlling tickers were added. 
+Boxes were added to take up the (screen - the margin), this is different from the storyboard popup.
+Colors were added to pretty much everything to make it look 'Cooler' 
+YTD currently works but needs more testing.  
+
