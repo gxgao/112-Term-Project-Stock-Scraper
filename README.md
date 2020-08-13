@@ -82,28 +82,10 @@ import numpy as np
 Import copy
 
 
-
-
-
-
-
-A list of any shortcut commands that exist. Shortcut commands can be used to demonstrate specific features by skipping forward in a game or loading sample data. They're useful for when you're testing your code too!
-
+Shortcut commands:
 To run on quick mode, I added a tester filer called tester 3. This skips the web scraping part (which can take a little time) and immediately has 2 industries loaded as well as a 2 graphs preloaded. To swap graphs, there are around 7 additional excel files that you can swap to. You just need to swap the prepGraph(csvFile)  function in the main graphics program to the CSV file you want to graph and analyze. It should be triggered by the event.key==’L’ which can be pressed after you go into single stock analysis, and once you enter ‘anything’ into the ticker. Make sure not to press ‘Enter’ during the input collection state. Thus you can skip web scraping and go immediately to the custom build graph. SO basically If you press L after entering anything into the inputs, it skips directly to the graphing state with no web scraping. NOTE: THIS FUNCTION IS NOT AVAILABLE IN THE MAIN FILE. Pressing L will do nothing. Please read on about the news functionality if you are in testing mode!
 
 
-NOTE: My NEWS API has a limited number of calls before it starts charging me. Thus I would greatly prefer it if you didn’t call it too much. So when not testing the news function: swap:
- news=termProject.getNews(ticker, dateRange) #searches news in each date range news1 
-        newsGroups=parseThroughNews(news, listOfTrends[i]) #newsGroup is a  #this allows us to group news by trends then
-                                        #find the best news for each trend 
-Into:
-news=news1#termProject.getNews(ticker, dateRange) #searches news in each date range news1 
-        newsGroups=parseThroughNews(news, listOfTrends[i]) 
-In the MLmodel file. This preloads a news dictionary on amazon and doesn’t call my api. This also means that it won’t find the news for the graph in question but it does test the UI for the news dots and stuff :P. 
+NOTE: This requires a NEWS API to work. An API key can be found https://stocknewsapi.com/. Your api key must be inserted into the termproject.py file under the variable apiKey= 'INSERT YOUR OWN API KEY HERE'
 
-Furthermore, because it’s tied to the app.ticker variable which is tied to the input you give it, when testing already downloaded excel graphs, make sure to enter the correct Ticker symbol during the input collection stage if you did not follow the change of code above. If you did change the code above, then it doesn’t matter. If you want to test the news scraping part after you’ve made the above changes, you must reset to news=termProject.getNews(ticker, dateRange).  You do not need to enter a time period, and can immediately press ‘d’ to get into the graphing stage. Also note, if you’re testing on test3, the webDriving will not work. If you want to test the webdriving go to main file (grpahics). 
-
-Also in quick access, the fundamentals and 1 y analyst prices are stuck to your ticker input, thus if you input random things, it would be random information pulled up from fundamentals and price analyst targets. 
-
-To quick access industry analysis, just press ‘d’ once you’re in the input state. It’ll take you directly to the two things that I’ve loaded already. 
 
